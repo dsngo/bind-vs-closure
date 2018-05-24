@@ -23,6 +23,29 @@ class Bar extends Component {
     );
   }
 }
+// USE OF CLASS INITIALIZER & CLOSURE
+
+class Bar1 extends Component {
+  state = {
+    selectedAddress: 'All'
+  }
+  updateBar = (bar) => () => {
+    this.setState({ selectedAddress: bar })
+  }
+  render() {
+    const bars = ['All', 'Dota 2', 'CSGO', 'Warcraft 3', 'Javascript', 'Functional Programing'];
+    return (
+      <ul className="bars">
+        <p>{this.state.selectedAddress}</p>
+        {bars.map(bar =>
+          <li onClick={this.updateAddress(bar)} key={bar}>
+            {bar}
+          </li>
+        )}
+      </ul>
+    );
+  }
+}
 
 // USE OF BIND
 class Bar1 extends Component {
